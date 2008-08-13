@@ -4,6 +4,39 @@ ALL RIGHTS RESERVED
 Academic Web Search (Acaweb) software
 Mike Flakus <mflakus@pdx.edu>
 
+
+Project Description:
+A federated search engine for searching many databases of
+scholarly works in parallel. The application is written in PHP 
+and Javascript and uses a MySQL database for caching search 
+results and logging usage. 
+
+
+Project Background:
+Hello, my name is Mike Flakus and this is my open source project 
+'Academic Web Search'. For the last year and a half, I have 
+worked for the Portland State University Library as a 
+programmer/analyst. In the search for scholarly works there is a 
+great need for search consolidation. Currently, if a user wants 
+to search for scholarly articles on the topic 'abortion', they 
+might search Academic Search Premier, Google Scholar, Alt 
+Healthwatch, ArticleFirst? and Child Abuse, Child Welfare and 
+Adoption among others. Unfortunately, this process is often far 
+too tedious and expects too much from the user. Hence, federated 
+searching was created to help simplify this process. 
+
+To facilitate this need, the PSU Library purchased the product 
+'Central Search' from SerialsSolutions. The product has had 
+numerous issues since its implementation a couple years ago. 
+SerialsSolutions was only able to include less than 1/3 of the 
+available vendor databases in the central search product and 
+searches would often fail, or take longer than 10 minutes to 
+return results. Due to budgetary concerns, the library may not 
+be able to justify leasing this product in the future. This project, 
+Academic Web Search, is being developed to potentially replace this 
+3rd party application in the future. 
+
+
 Installation:
 Academic Web Search requires PHP 4+ (with the yaz extension
 installed) and MySQL 4+. To install the necessary MySQL
@@ -17,11 +50,14 @@ information in the config.inc.php file. If you would like to
 change the image for the openURL resolver, that image can be
 replaced at /img/resolver.gif.
 
+
 Offical GIT Repository:
 Public Clone URL = git://github.com/mflakus/academic-web-search.git 
 
+
 Project Wiki:
 https://projects.cecs.pdx.edu/~mflakus/academic-web-search
+
 
 Project Blog: 
 http://acaweb.blogspot.com
