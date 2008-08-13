@@ -1,1 +1,32 @@
-ACADEMIC WEB SEARCH
+Copyright (c) 2008 Mike Flakus
+ALL RIGHTS RESERVED
+
+Academic Web Search (Acaweb) software
+Mike Flakus <mflakus@pdx.edu>
+
+Installation:
+Academic Web Search requires PHP 4+ (with the yaz extension
+installed) and MySQL 4+. To install the necessary MySQL
+database structure, you can use the file acaweb.sql in the
+/mysql folder to load the necessary tables.
+Once the MySQL tables have been created, you can enter the 
+authentication information in the file /includes/config.inc.php
+for the MySQL server. Additionally, if you have a username and
+password for an ebscohost profile, you may also enter that
+information in the config.inc.php file. If you would like to 
+change the image for the openURL resolver, that image can be
+replaced at /img/resolver.gif.
+
+Offical GIT Repository:
+Public Clone URL = git://github.com/mflakus/academic-web-search.git 
+
+Project Wiki:
+https://projects.cecs.pdx.edu/~mflakus/academic-web-search
+
+Project Blog: 
+http://acaweb.blogspot.com
+
+
+
+
+
