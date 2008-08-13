@@ -1,9 +1,9 @@
 <?php
 
-function search_agricola($db_id,$search_terms,$sr)
+function search_alt_healthwatch($db_id,$search_terms,$sr)
 {
 	global $ebsco_username, $ebsco_password;
-	
+		
 	$starting_record = 1;
 	$num_records = 20;
 	
@@ -13,7 +13,7 @@ function search_agricola($db_id,$search_terms,$sr)
 	$auth = array();
 	$auth['user'] = $ebsco_username;
 	$auth['password'] = $ebsco_password;
-	$host = "epserver.epnet.com/agr";
+	$host = "epserver.epnet.com/awh";
 
 	$conn = yaz_connect($host,$auth);
 	yaz_syntax($conn, "usmarc");
@@ -91,7 +91,17 @@ function search_agricola($db_id,$search_terms,$sr)
 					//print("TITLE: [$title]<br>\n");
 					break;
 				case '520':
-					$abstract = str_replace("520    \$a ","",$line);
+					$parts_520 = explode("\$",$line);
+					foreach($parts_520 as $part_520)
+					{
+						$char_520 = substr($part_520,0,1);
+						switch($char_520)
+						{
+							case 'a':
+							$abstract = substr($part_520,2);
+							break;
+						}
+					}
 					//print("abstract: [$abstract]<br>\n");
 					break;
 				case '773':
@@ -106,17 +116,22 @@ function search_agricola($db_id,$search_terms,$sr)
 								//print("<pre>\n");
 								//print_r($parts_773g);
 								//print("</pre>\n");
-								if(!strcmp($date,''))
+								$date_stamp = strtotime($parts_773g[0]);
+								if($date_stamp === false)
+									$date = $parts_773g[0];
+								else
+									$date = date('M Y',$date_stamp);
+								
+								$volume_issue = trim($parts_773g[1]);
+								$issue_pos = strpos($volume_issue,"Issue");
+								if($issue_pos === false)
+									$volume = $volume_issue;
+								else
 								{
-									$date_stamp = strtotime($parts_773g[0]);
-									if($date_stamp === false)
-										$date = $parts_773g[0];
-									else
-										$date = date('m/Y',$date_stamp);
+									$volume = substr($volume_issue,0,$issue_pos-1);
+									$issue = substr($volume_issue,$issue_pos);
 								}
-								if(!strcmp($volume,'')) $volume = trim($parts_773g[1]);
-								if(!strcmp($issue,'')) $issue = trim($parts_773g[2]);
-								//$pages = trim($parts_773g[2]);
+								$pages = trim($parts_773g[2]);
 								break;
 							case 't':
 								$source = substr($part_773,2);
@@ -150,9 +165,6 @@ function search_agricola($db_id,$search_terms,$sr)
 					$html_full_text .= str_replace("900    \$a ","",$line)."<br>\n";
 					//print("full text: $html_full_text<br>\n");
 					break;
-				case '901':
-					$doi = trim(substr($line,9));
-					break;
 			}
 		}
 		
@@ -163,10 +175,10 @@ function search_agricola($db_id,$search_terms,$sr)
 			$l->type = "direct";
 			$links[] = $l;
 		}
-		else if(count($links)==0 && strcmp($doi,''))
+		else if(count($links)==0)
 		{
 			$l = new link();
-			$l->url = $doi;
+			$l->url = "http://search.ebscohost.com/login.aspx?direct=true&AuthType=ip,url,cookie,uid&an=$id&db=awh&scope=site&site=ehost";
 			$l->type = "direct";
 			$links[] = $l;
 		}

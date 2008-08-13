@@ -2,15 +2,13 @@
 
 function search_academic_search_premier($db_id,$search_terms,$sr)
 {
+	global $ebsco_username, $ebsco_password;
+	
 	$starting_record = 1;
 	$num_records = 20;
 	
 	$time_start = microtime(true);
 	$vsr = $sr->vendor_results[0];
-	
-	// authentication
-	$ebsco_username = "s1185784.main.z3950";
-	$ebsco_password = "ebsco";
 	
 	$auth = array();
 	$auth['user'] = $ebsco_username;

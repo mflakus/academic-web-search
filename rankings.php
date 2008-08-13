@@ -1,5 +1,6 @@
 <?php
 
+require_once("includes/config.inc.php");
 require_once("includes/connect.php");
 require_once("http://www.lib.pdx.edu/web_templates/library_site_header.inc.php");
 print("<div id='PSUContent'>\n");

@@ -1,5 +1,6 @@
+<?php
 
-n search_multisearch($db_id,$search_terms,$sr)
+function search_multisearch($db_id,$search_terms,$sr)
 {
 	$time_start = microtime(true);
 	$search_index = "anyField";
