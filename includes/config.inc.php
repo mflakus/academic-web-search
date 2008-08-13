@@ -5,14 +5,14 @@
 // Please see the end of this file for license information.
 
 	// mysql connection info
-	$mysql_username = "root";
-	$mysql_password = "isingfunkstorkmyself";
-	$mysql_db       = "acaweb";
-	$mysql_host     = "localhost";
+	$mysql_username = "";
+	$mysql_password = "";
+	$mysql_db       = "";
+	$mysql_host     = "";
 	
 	// ebscohost authentication
-	$ebsco_username = "s1185784.main.z3950";
-	$ebsco_password = "ebsco";
+	$ebsco_username = "";
+	$ebsco_password = "";
 
 
 // 		    GNU GENERAL PUBLIC LICENSE
